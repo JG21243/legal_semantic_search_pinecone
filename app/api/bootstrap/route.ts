@@ -7,7 +7,18 @@ export const maxDuration = 300;
 // 1. Return a response to the client quickly 
 // 2. Allow a long-running background task to complete
 export async function POST() {
-  await initiateBootstrapping(process.env.PINECONE_INDEX as string)
+  console.log('POST request received');
 
-  return NextResponse.json({ success: true }, { status: 200 })
+  const pineconeIndex = process.env.PINECONE_INDEX as string;
+  console.log('Pinecone Index:', pineconeIndex);
+
+  try {
+    await initiateBootstrapping(pineconeIndex);
+    console.log('Bootstrapping initiated successfully');
+  } catch (error) {
+    console.error('Error initiating bootstrapping:', error);
+  }
+
+  console.log('Returning response to client');
+  return NextResponse.json({ success: true }, { status: 200 });
 }
