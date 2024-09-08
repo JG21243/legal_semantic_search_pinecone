@@ -64,59 +64,68 @@
       "outcome": "Guaranteed the right to legal counsel"
     },
     {
-      "filename":"roper_vs_simmons.pdf",
-      "title":"Roper v. Simmons",
-      "plaintiff":"Roper",
-      "defendant":"Simmons",
-      "date":"2005",
-      "topic":"Age Restriction",
-      "outcome":"Ruling against Roper"
-    }, 
-    {
-      "filename":"nytimes_vs_us.pdf",
-      "title":"New York Times v. United States",
-      "plaintiff":"New York Times",
-      "defendant":"United States",
-      "date":"1971",
-      "topic":"first amendment freedom of the Press",
-      "outcome":"Ruling against the Nixon administration"
-    }, 
-    {
-      "filename":"baker_vs_carr.pdf",
-      "title":"Baker v. Carr",
-      "plaintiff":"Baker",
-      "defendant":"Carr",
-      "date":"1962",
-      "topic":"",
-      "outcome":""
+      "filename": "roper_vs_simmons.pdf",
+      "title": "Roper v. Simmons",
+      "plaintiff": "Roper",
+      "defendant": "Simmons",
+      "date": "2005",
+      "topic": "Age Restriction",
+      "outcome": "Ruling against Roper"
     },
     {
-      "filename":"mapp_vs_ohio.pdf",
-      "title":"Mapp v. Ohio",
-      "plaintiff":"Mapp",
-      "defendant":"Ohio",
-      "date":"1961",
-      "topic":"Judicial Review",
-      "outcome":"Strengthened Fourth Amendment protections"
+      "filename": "nytimes_vs_us.pdf",
+      "title": "New York Times v. United States",
+      "plaintiff": "New York Times",
+      "defendant": "United States",
+      "date": "1971",
+      "topic": "first amendment freedom of the Press",
+      "outcome": "Ruling against the Nixon administration"
     },
     {
-      "filename":"dc_vs_heller.pdf",
-      "title":"District of Columbia v. Heller",
-      "plaintiff":"District of Columbia",
-      "defendant":"Heller",
-      "date":"2008",
-      "topic":"Individual firearms rights",
-      "outcome":"Strengthened second Amendment protections"
-    }, 
+      "filename": "osp.pdf",
+      "title": "Open Source Property",
+      "plaintiff": "New York Times",
+      "defendant": "United States",
+      "date": "1971",
+      "topic": "osp open source property",
+      "outcome": "open source property textbook"
+    },
+
     {
-      "filename":"tinker_vs_desmoins.pdf",
-      "title":"Tinker v. Desmoins",
-      "plaintiff":"Tinker",
-      "defendant":"Desmoins",
-      "date":"2008",
-      "topic":"Student free speech within schools",
-      "outcome":"Strengthened first Amendment protections"
+      "filename": "baker_vs_carr.pdf",
+      "title": "Baker v. Carr",
+      "plaintiff": "Baker",
+      "defendant": "Carr",
+      "date": "1962",
+      "topic": "",
+      "outcome": ""
+    },
+    {
+      "filename": "mapp_vs_ohio.pdf",
+      "title": "Mapp v. Ohio",
+      "plaintiff": "Mapp",
+      "defendant": "Ohio",
+      "date": "1961",
+      "topic": "Judicial Review",
+      "outcome": "Strengthened Fourth Amendment protections"
+    },
+    {
+      "filename": "dc_vs_heller.pdf",
+      "title": "District of Columbia v. Heller",
+      "plaintiff": "District of Columbia",
+      "defendant": "Heller",
+      "date": "2008",
+      "topic": "Individual firearms rights",
+      "outcome": "Strengthened second Amendment protections"
+    },
+    {
+      "filename": "tinker_vs_desmoins.pdf",
+      "title": "Tinker v. Desmoins",
+      "plaintiff": "Tinker",
+      "defendant": "Desmoins",
+      "date": "2008",
+      "topic": "Student free speech within schools",
+      "outcome": "Strengthened first Amendment protections"
     }
   ]
 }
-
