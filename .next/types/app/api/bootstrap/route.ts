@@ -1,8 +1,8 @@
-// File: /workspaces/codespaces-blank/legal-semantic-search/src/app/api/bootstrap/route.ts
-import * as entry from '../../../../../src/app/api/bootstrap/route.js'
+// File: /workspaces/codespaces-blank/legal-semantic-search/app/api/bootstrap/route.ts
+import * as entry from '../../../../../app/api/bootstrap/route.js'
 import type { NextRequest } from 'next/server.js'
 
-type TEntry = typeof import('../../../../../src/app/api/bootstrap/route.js')
+type TEntry = typeof import('../../../../../app/api/bootstrap/route.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
