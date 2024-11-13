@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Card, CardContent } from "@/components/ui/card";
-import SearchForm from '@/components/SearchForm';
-import DocumentView from '@/components/DocumentView';
+import { Card, CardContent } from "@/src/components/ui/card";
+import SearchForm from '@/src/components/SearchForm';
+import DocumentView from '@/src/components/DocumentView';
 import { type Document } from './types/document';
-import { sanitizeString } from '@/lib/utils';
+import { sanitizeString } from '../lib/utils';
 
 interface SearchResult {
   metadata: Document['metadata'];
