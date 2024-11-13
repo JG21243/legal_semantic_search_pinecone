@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { sanitizeString } from '@/lib/utils';
+import { sanitizeString } from '../lib/utils';
 
 interface DocumentViewProps {
   document: {
