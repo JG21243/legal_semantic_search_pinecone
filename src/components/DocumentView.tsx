@@ -36,12 +36,12 @@ export default function DocumentView({ document, quote, onBack }: DocumentViewPr
       setIsLoading(true)
       setError(null)
       try {
-        const content = contentRef.current.innerHTML
+        const content = document.content || document.metadata.pageContent
         const highlightedContent = content.replace(
           new RegExp(quote, 'gi'),
           match => `<mark class="bg-yellow-200 dark:bg-yellow-800">${match}</mark>`
         )
-        contentRef.current.innerHTML = highlightedContent
+        contentRef.current.innerHTML = sanitizeString(highlightedContent)
 
         const highlight = contentRef.current.querySelector('mark')
         if (highlight) {
@@ -54,7 +54,7 @@ export default function DocumentView({ document, quote, onBack }: DocumentViewPr
         setIsLoading(false)
       }
     }
-  }, [quote])
+  }, [quote, document])
 
   if (!document) {
     return <div className="text-center p-4">No document found</div>
@@ -109,7 +109,6 @@ export default function DocumentView({ document, quote, onBack }: DocumentViewPr
                 <div
                   ref={contentRef}
                   className="prose dark:prose-invert max-w-none"
-                  dangerouslySetInnerHTML={{ __html: sanitizeString(document.metadata.pageContent) }}
                 />
               )}
             </ScrollArea>
