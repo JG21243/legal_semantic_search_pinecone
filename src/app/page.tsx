@@ -64,9 +64,6 @@ const handleSearch = async (
 
 const suggestedSearches = [
   'Cases about personal freedoms being violated',
-  'Cases involving a US President',
-  'Cases involving guns',
-  'Cases where Nixon was the defendant',
   'How much power does the commerce clause give Congress?',
   'Cases about personal rights or congressional overreach?',
   'Cases involving the ability to pay for an attorney',
