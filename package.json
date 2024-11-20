@@ -16,6 +16,7 @@
     "@langchain/pinecone": "^0.0.7",
     "@langchain/textsplitters": "^0.0.2",
     "@pinecone-database/pinecone": "^2.2.1",
+    "@radix-ui/react-scroll-area": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@types/uuid": "^9.0.8",
     "class-variance-authority": "^0.7.0",

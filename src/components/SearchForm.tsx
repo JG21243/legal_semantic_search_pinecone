@@ -1,11 +1,17 @@
-import { useState, ChangeEvent, FormEvent, useCallback, useRef, useEffect } from 'react';
-import { Search, X } from 'lucide-react';
+'use client'
+
+import { useState, ChangeEvent, FormEvent, useCallback, useRef, useEffect } from 'react'
+import { Search, X } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Card, CardContent } from "@/components/ui/card"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface SearchFormProps {
-  suggestedSearches: string[];
-  onSearch: (query: string) => void;
-  placeholder?: string;
-  maxSuggestions?: number;
+  suggestedSearches: string[]
+  onSearch: (query: string) => void
+  placeholder?: string
+  maxSuggestions?: number
 }
 
 const SearchForm = ({ 
@@ -14,46 +20,44 @@ const SearchForm = ({
   placeholder = "Search legal docs or view suggestions",
   maxSuggestions = 5
 }: SearchFormProps) => {
-  const [query, setQuery] = useState<string>("");
-  const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const suggestionsRef = useRef<HTMLDivElement>(null);
+  const [query, setQuery] = useState<string>("")
+  const [showSuggestions, setShowSuggestions] = useState<boolean>(false)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const suggestionsRef = useRef<HTMLDivElement>(null)
 
-  // Filter suggestions based on input
   const filteredSuggestions = suggestedSearches
     .filter(suggestion => 
       suggestion.toLowerCase().includes(query.toLowerCase()))
-    .slice(0, maxSuggestions);
+    .slice(0, maxSuggestions)
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-    setShowSuggestions(true);
-  };
+    setQuery(e.target.value)
+    setShowSuggestions(true)
+  }
 
   const handleSubmit = useCallback((e: FormEvent) => {
-    e.preventDefault();
-    if (!query.trim()) return;
+    e.preventDefault()
+    if (!query.trim()) return
     
-    onSearch(query.trim());
-    setQuery("");
-    setShowSuggestions(false);
-    inputRef.current?.blur();
-  }, [query, onSearch]);
+    onSearch(query.trim())
+    setQuery("")
+    setShowSuggestions(false)
+    inputRef.current?.blur()
+  }, [query, onSearch])
 
   const handleSuggestionClick = useCallback((suggestion: string) => {
-    setQuery(suggestion);
-    onSearch(suggestion);
-    setShowSuggestions(false);
-    inputRef.current?.blur();
-  }, [onSearch]);
+    setQuery(suggestion)
+    onSearch(suggestion)
+    setShowSuggestions(false)
+    inputRef.current?.blur()
+  }, [onSearch])
 
   const handleClear = useCallback(() => {
-    setQuery("");
-    setShowSuggestions(true);
-    inputRef.current?.focus();
-  }, []);
+    setQuery("")
+    setShowSuggestions(true)
+    inputRef.current?.focus()
+  }, [])
 
-  // Handle click outside to close suggestions
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -61,20 +65,19 @@ const SearchForm = ({
         !suggestionsRef.current.contains(event.target as Node) &&
         !inputRef.current?.contains(event.target as Node)
       ) {
-        setShowSuggestions(false);
+        setShowSuggestions(false)
       }
-    };
+    }
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
-  // Handle keyboard navigation
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
-      setShowSuggestions(false);
+      setShowSuggestions(false)
     }
-  }, []);
+  }, [])
 
   return (
     <div className="w-full max-w-2xl mx-auto">
@@ -84,14 +87,14 @@ const SearchForm = ({
         role="search"
       >
         <div className="relative">
-          <input
+          <Input
             ref={inputRef}
             type="search"
             value={query}
             onChange={handleInputChange}
             onFocus={() => setShowSuggestions(true)}
             onKeyDown={handleKeyDown}
-            className="w-full px-4 py-2 pr-24 border border-gray-300 bg-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+            className="pr-20"
             placeholder={placeholder}
             aria-label="Search input"
             aria-controls="search-suggestions"
@@ -101,58 +104,64 @@ const SearchForm = ({
           />
           
           {query && (
-            <button
+            <Button
               type="button"
+              variant="ghost"
+              size="icon"
               onClick={handleClear}
-              className="absolute top-1/2 transform -translate-y-1/2 right-14 text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100 transition-colors duration-200"
+              className="absolute right-12 top-1/2 -translate-y-1/2"
               aria-label="Clear search"
             >
-              <X className="w-4 h-4" />
-            </button>
+              <X className="h-4 w-4" />
+            </Button>
           )}
           
-          <button
+          <Button
             type="submit"
-            className="absolute top-1/2 transform -translate-y-1/2 right-2 w-10 h-10 flex items-center justify-center bg-indigo-600 text-white rounded-lg transition-all duration-200 hover:bg-indigo-700 disabled:opacity-50 disabled:bg-gray-400 disabled:cursor-not-allowed"
+            size="icon"
+            className="absolute right-1 top-1/2 -translate-y-1/2"
             disabled={!query.trim()}
             aria-label="Submit search"
           >
-            <Search className="w-5 h-5" />
-          </button>
+            <Search className="h-4 w-4" />
+          </Button>
         </div>
 
         {showSuggestions && filteredSuggestions.length > 0 && (
-          <div
+          <Card
             ref={suggestionsRef}
             id="search-suggestions"
-            className="absolute mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto z-10"
-            role="listbox"
+            className="absolute mt-2 w-full z-10"
           >
-            <div className="px-4 py-2 text-gray-700 font-semibold border-b border-gray-100">
-              Popular searches
-            </div>
-            {filteredSuggestions.map((suggestion, index) => (
-              <div
-                key={index}
-                className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-700 transition-colors duration-150"
-                onClick={() => handleSuggestionClick(suggestion)}
-                role="option"
-                aria-selected={query === suggestion}
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    handleSuggestionClick(suggestion);
-                  }
-                }}
-              >
-                {suggestion}
-              </div>
-            ))}
-          </div>
+            <CardContent className="p-0">
+              <ScrollArea className="h-[300px]">
+                <div className="p-4 text-sm font-medium text-muted-foreground border-b">
+                  Popular searches
+                </div>
+                {filteredSuggestions.map((suggestion, index) => (
+                  <div
+                    key={index}
+                    className="px-4 py-2 hover:bg-muted cursor-pointer text-sm transition-colors duration-150"
+                    onClick={() => handleSuggestionClick(suggestion)}
+                    role="option"
+                    aria-selected={query === suggestion}
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        handleSuggestionClick(suggestion)
+                      }
+                    }}
+                  >
+                    {suggestion}
+                  </div>
+                ))}
+              </ScrollArea>
+            </CardContent>
+          </Card>
         )}
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default SearchForm;
+export default SearchForm
