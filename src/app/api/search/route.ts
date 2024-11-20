@@ -30,7 +30,7 @@ export async function POST(req: Request) {
 
     console.log(`query is: ${query}`)
 
-    const retrieved = await vectorStore.maxMarginalRelevanceSearch(query, { k: 20 });
+    const retrieved = await vectorStore.maxMarginalRelevanceSearch(query, { k: 5 });
 
     // Filter to ensure results set is unique - filter on the metadata.id
     const results: any = retrieved.filter((result, index) => {
